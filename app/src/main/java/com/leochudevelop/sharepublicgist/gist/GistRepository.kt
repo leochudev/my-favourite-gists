@@ -9,12 +9,8 @@ import kotlinx.coroutines.withContext
 // TODO: use DI framework instead of singleton pattern.
 class GistRepository {
 
-    private suspend fun getGists(): List<Gist> = withContext(Dispatchers.IO) {
+    suspend fun getGists(): List<Gist> = withContext(Dispatchers.IO) {
         RetrofitClient.gitHubService.allPublicGists()
-    }
-
-    suspend fun getAllGistIds(): List<String> = withContext(Dispatchers.IO) {
-        getGists().map { it.id }
     }
 
     companion object {

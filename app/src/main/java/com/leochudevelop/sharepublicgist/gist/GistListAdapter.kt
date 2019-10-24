@@ -3,15 +3,15 @@ package com.leochudevelop.sharepublicgist.gist
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.leochudevelop.sharepublicgist.R
 
 /**
  * A recycler view adapter to display the gist information.
  */
-class GistListAdapter : RecyclerView.Adapter<GistListAdapter.MyViewHolder>() {
-
-    private val dataSet: MutableList<String> = mutableListOf()
+class GistListAdapter : ListAdapter<Gist, GistListAdapter.MyViewHolder>(GistDiffCallback()) {
 
     class MyViewHolder(val textView: TextView) : RecyclerView.ViewHolder(textView)
 
@@ -25,14 +25,17 @@ class GistListAdapter : RecyclerView.Adapter<GistListAdapter.MyViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.textView.text = dataSet[position]
+        holder.textView.text = getItem(position).id
+    }
+}
+
+private class GistDiffCallback : DiffUtil.ItemCallback<Gist>() {
+
+    override fun areItemsTheSame(oldItem: Gist, newItem: Gist): Boolean {
+        return oldItem.id == newItem.id
     }
 
-    override fun getItemCount() = dataSet.size
-
-    fun replaceAll(list: Collection<String>) {
-        dataSet.clear()
-        dataSet.addAll(list)
-        notifyDataSetChanged()
+    override fun areContentsTheSame(oldItem: Gist, newItem: Gist): Boolean {
+        return oldItem == newItem
     }
 }

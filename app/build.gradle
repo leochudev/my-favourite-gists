@@ -21,6 +21,14 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    // work-runtime-ktx 2.1.0 and above now requires Java 8
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
 }
 
 dependencies {
@@ -44,4 +52,5 @@ dependencies {
 
     // experimental libraries
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.2.0-rc01"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.2.0-rc01"
 }
