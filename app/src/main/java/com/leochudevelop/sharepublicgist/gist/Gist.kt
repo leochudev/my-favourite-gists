@@ -14,4 +14,4 @@ data class Gist(
 
 data class GistFile(val filename: String)
 
-data class User(@SerializedName("avatar_url") val avatarUrl: String)
+data class User(val login: String, @SerializedName("avatar_url") val avatarUrl: String)

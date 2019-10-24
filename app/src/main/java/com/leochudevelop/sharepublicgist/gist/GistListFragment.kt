@@ -39,7 +39,7 @@ class GistListFragment : Fragment() {
 
     private fun subscribeUI(adapter: GistListAdapter) {
         viewModel.gists.observe(viewLifecycleOwner) { gists ->
-            adapter.submitList(gists)
+            adapter.submitList(gists.toList())
         }
     }
 }

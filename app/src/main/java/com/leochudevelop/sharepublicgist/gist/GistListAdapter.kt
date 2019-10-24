@@ -1,10 +1,10 @@
 package com.leochudevelop.sharepublicgist.gist
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -18,18 +18,24 @@ class GistListAdapter : ListAdapter<Gist, GistListAdapter.MyViewHolder>(GistDiff
 
     class MyViewHolder(root: View) : RecyclerView.ViewHolder(root) {
 
-        private val textView: TextView = root.id_text_view
+        private val idTextView: TextView = root.id_text_view
         private var actionId: String? = null
 
         init {
-            root.setOnClickListener {
-                Log.i(GistListAdapter::class.java.simpleName, actionId ?: "")
-            }
+            root.setOnClickListener { it.navigateToDetail() }
         }
 
         fun bind(id: String) {
-            textView.text = id
+            idTextView.text = id
             actionId = id
+        }
+
+        private fun View.navigateToDetail() {
+            val directions =
+                GistListFragmentDirections.actionGistListFragmentToGistDetailFragment(
+                    actionId ?: ""
+                )
+            findNavController().navigate(directions)
         }
     }
 

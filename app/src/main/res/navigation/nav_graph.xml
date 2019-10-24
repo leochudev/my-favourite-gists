@@ -9,6 +9,21 @@
         android:id="@+id/gist_list_fragment"
         android:name="com.leochudevelop.sharepublicgist.gist.GistListFragment"
         android:label="GistListFragment"
-        tools:layout="@layout/fragment_gist_list"/>
+        tools:layout="@layout/fragment_gist_list">
+        <action
+            android:id="@+id/action_gist_list_fragment_to_gistDetailFragment"
+            app:destination="@id/gist_detail_fragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/gist_detail_fragment"
+        android:name="com.leochudevelop.sharepublicgist.gist.GistDetailFragment"
+        android:label="fragment_gist_detail"
+        tools:layout="@layout/fragment_gist_detail" >
+
+        <argument
+            android:name="username"
+            app:argType="string" />
+    </fragment>
 
 </navigation>
