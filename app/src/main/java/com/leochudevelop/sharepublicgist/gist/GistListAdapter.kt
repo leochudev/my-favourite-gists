@@ -9,8 +9,9 @@ import com.leochudevelop.sharepublicgist.R
 /**
  * A recycler view adapter to display the gist information.
  */
-class GistListAdapter(private val dataSet: Array<String>) :
-    RecyclerView.Adapter<GistListAdapter.MyViewHolder>() {
+class GistListAdapter : RecyclerView.Adapter<GistListAdapter.MyViewHolder>() {
+
+    private val dataSet: MutableList<String> = mutableListOf()
 
     class MyViewHolder(val textView: TextView) : RecyclerView.ViewHolder(textView)
 
@@ -28,4 +29,10 @@ class GistListAdapter(private val dataSet: Array<String>) :
     }
 
     override fun getItemCount() = dataSet.size
+
+    fun replaceAll(list: Collection<String>) {
+        dataSet.clear()
+        dataSet.addAll(list)
+        notifyDataSetChanged()
+    }
 }

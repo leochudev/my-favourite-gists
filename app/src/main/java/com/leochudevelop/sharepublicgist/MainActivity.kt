@@ -1,33 +1,41 @@
 package com.leochudevelop.sharepublicgist
 
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
-import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
+import com.google.android.material.snackbar.Snackbar
 import com.leochudevelop.sharepublicgist.gist.GistListAdapter
-
+import com.leochudevelop.sharepublicgist.gist.GistRepository
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var gistListAdapter: GistListAdapter
-
-    private val dummyDataSet: Array<String> = arrayOf("title 1", "title 2", "title 3")
+    private lateinit var gistRepository: GistRepository
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
 
-        gistListAdapter = GistListAdapter(dummyDataSet)
+        gistListAdapter = GistListAdapter()
         gist_list.setHasFixedSize(true)
         gist_list.adapter = gistListAdapter
 
         fab.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show()
+        }
+
+        // TODO: move below logic to view controller/presenter class
+        gistRepository = GistRepository()
+        lifecycleScope.launch {
+            val dataSet = gistRepository.getAllGistIds()
+            gistListAdapter.replaceAll(dataSet)
         }
     }
 
