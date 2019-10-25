@@ -1,8 +1,8 @@
 package com.leochudevelop.sharepublicgist.utils
 
 import androidx.lifecycle.ViewModelProvider
-import com.leochudevelop.sharepublicgist.gist.GistListViewModelFactory
-import com.leochudevelop.sharepublicgist.gist.GistRepository
+import com.leochudevelop.sharepublicgist.list.GistListViewModelFactory
+import com.leochudevelop.sharepublicgist.source.GistRepository
 
 object InjectorUtils {
 

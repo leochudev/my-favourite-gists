@@ -1,4 +1,4 @@
-package com.leochudevelop.sharepublicgist.gist
+package com.leochudevelop.sharepublicgist.source
 
 import com.google.gson.GsonBuilder
 import retrofit2.Retrofit

@@ -1,5 +1,6 @@
-package com.leochudevelop.sharepublicgist.gist
+package com.leochudevelop.sharepublicgist.source
 
+import com.leochudevelop.sharepublicgist.data.Gist
 import retrofit2.http.GET
 
 /**

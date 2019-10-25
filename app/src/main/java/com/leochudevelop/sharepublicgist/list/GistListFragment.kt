@@ -1,4 +1,4 @@
-package com.leochudevelop.sharepublicgist.gist
+package com.leochudevelop.sharepublicgist.list
 
 import android.os.Bundle
 import android.view.LayoutInflater

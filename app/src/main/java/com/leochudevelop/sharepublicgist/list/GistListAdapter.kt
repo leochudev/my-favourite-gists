@@ -1,4 +1,4 @@
-package com.leochudevelop.sharepublicgist.gist
+package com.leochudevelop.sharepublicgist.list
 
 import android.content.res.Resources
 import android.view.LayoutInflater
@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.leochudevelop.sharepublicgist.R
+import com.leochudevelop.sharepublicgist.data.Gist
 import kotlinx.android.synthetic.main.gist_item_view.view.*
 
 /**

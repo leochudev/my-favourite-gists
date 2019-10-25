@@ -1,4 +1,4 @@
-package com.leochudevelop.sharepublicgist.gist
+package com.leochudevelop.sharepublicgist.data
 
 import com.google.gson.annotations.SerializedName
 
