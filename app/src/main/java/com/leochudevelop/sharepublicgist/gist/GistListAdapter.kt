@@ -1,5 +1,6 @@
 package com.leochudevelop.sharepublicgist.gist
 
+import android.content.res.Resources
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,15 +19,20 @@ class GistListAdapter : ListAdapter<Gist, GistListAdapter.MyViewHolder>(GistDiff
 
     class MyViewHolder(root: View) : RecyclerView.ViewHolder(root) {
 
+        private val resources: Resources = root.context.resources
         private val idTextView: TextView = root.id_text_view
+        private val urlTextView: TextView = root.url_text_view
+        private val filenameTextView: TextView = root.filename_text_view
         private var actionId: String? = null
 
         init {
             root.setOnClickListener { it.navigateToDetail() }
         }
 
-        fun bind(id: String) {
-            idTextView.text = id
+        fun bind(id: String, url: String, filename: String) {
+            idTextView.text = resources.getString(R.string.id_text_format, id)
+            urlTextView.text = resources.getString(R.string.url_text_format, url)
+            filenameTextView.text = resources.getString(R.string.filename_text_format, filename)
             actionId = id
         }
 
@@ -48,8 +54,14 @@ class GistListAdapter : ListAdapter<Gist, GistListAdapter.MyViewHolder>(GistDiff
         return MyViewHolder(gistItemView)
     }
 
-    override fun onBindViewHolder(holder: MyViewHolder, position: Int) =
-        holder.bind(getItem(position).id)
+    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
+        val gist = getItem(position)
+        holder.bind(
+            gist.id,
+            gist.url,
+            gist.files.keys.toString()
+        )
+    }
 }
 
 private class GistDiffCallback : DiffUtil.ItemCallback<Gist>() {
