@@ -1,17 +1,18 @@
 package com.leochudevelop.sharepublicgist.data
 
-import com.google.gson.annotations.SerializedName
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 
-/**
- * A DTO for [https://api.github.com/gists/public] API.
- */
+@Entity(tableName = "gists")
 data class Gist(
-    val id: String = "",
-    val url: String = "",
-    val files: Map<String, GistFile>,
-    val owner: User
-)
+    @PrimaryKey @ColumnInfo(name = "id") val gistId: String,
+    @ColumnInfo(name = "url") val url: String,
+    @ColumnInfo(name = "files") val files: String,
+    @ColumnInfo(name = "username") val username: String
+) {
+    @ColumnInfo(name = "favourite") var isFavourite = false
+    @ColumnInfo(name = "shares") var shareCount = 0
 
-data class GistFile(val filename: String)
-
-data class User(val login: String, @SerializedName("avatar_url") val avatarUrl: String)
+    override fun toString() = gistId
+}

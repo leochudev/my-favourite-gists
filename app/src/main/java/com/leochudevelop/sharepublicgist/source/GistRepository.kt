@@ -1,26 +1,22 @@
 package com.leochudevelop.sharepublicgist.source
 
-import com.leochudevelop.sharepublicgist.data.Gist
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
+import com.leochudevelop.sharepublicgist.data.GistDao
 
 /**
  * A singleton repository class to provide the gists information.
  */
 // TODO: use DI framework instead of singleton pattern.
-class GistRepository {
+class GistRepository private constructor(private val gistDao: GistDao) {
 
-    suspend fun getGists(): Collection<Gist> = withContext(Dispatchers.IO) {
-        RetrofitClient.gitHubService.allPublicGists()
-    }
+    fun getGists() = gistDao.getGists()
 
     companion object {
         @Volatile
         private var instance: GistRepository? = null
 
-        fun getInstance(): GistRepository =
+        fun getInstance(gistDao: GistDao): GistRepository =
             instance ?: synchronized(this) {
-                instance ?: GistRepository()
+                instance ?: GistRepository(gistDao).also { instance = it }
             }
     }
 }

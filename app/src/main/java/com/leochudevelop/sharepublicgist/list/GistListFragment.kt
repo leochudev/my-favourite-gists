@@ -17,7 +17,7 @@ import kotlinx.android.synthetic.main.fragment_gist_list.view.*
 class GistListFragment : Fragment() {
 
     private val viewModel: GistListViewModel by viewModels {
-        InjectorUtils.provideGistListViewModelFactory()
+        InjectorUtils.provideGistListViewModelFactory(requireContext())
     }
 
     override fun onCreateView(
@@ -39,7 +39,7 @@ class GistListFragment : Fragment() {
 
     private fun subscribeUI(adapter: GistListAdapter) {
         viewModel.gists.observe(viewLifecycleOwner) { gists ->
-            adapter.submitList(gists.toList())
+            adapter.submitList(gists)
         }
     }
 }

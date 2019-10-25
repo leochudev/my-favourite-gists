@@ -1,6 +1,6 @@
 package com.leochudevelop.sharepublicgist.source
 
-import com.leochudevelop.sharepublicgist.data.Gist
+import com.leochudevelop.sharepublicgist.data.GistDto
 import retrofit2.http.GET
 
 /**
@@ -8,5 +8,5 @@ import retrofit2.http.GET
  */
 interface GitHubService {
     @GET("/gists/public")
-    suspend fun allPublicGists(): List<Gist>
+    suspend fun allPublicGists(): List<GistDto>
 }

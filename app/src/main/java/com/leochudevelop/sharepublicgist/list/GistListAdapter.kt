@@ -4,6 +4,7 @@ import android.content.res.Resources
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.CheckBox
 import android.widget.TextView
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
@@ -24,16 +25,18 @@ class GistListAdapter : ListAdapter<Gist, GistListAdapter.MyViewHolder>(GistDiff
         private val idTextView: TextView = root.id_text_view
         private val urlTextView: TextView = root.url_text_view
         private val filenameTextView: TextView = root.filename_text_view
+        private val starCheckBox: CheckBox = root.star_check_box
         private var actionId: String? = null
 
         init {
             root.setOnClickListener { it.navigateToDetail() }
         }
 
-        fun bind(id: String, url: String, filename: String) {
+        fun bind(id: String, url: String, filename: String, isFavourite: Boolean) {
             idTextView.text = resources.getString(R.string.id_text_format, id)
             urlTextView.text = resources.getString(R.string.url_text_format, url)
             filenameTextView.text = resources.getString(R.string.filename_text_format, filename)
+            starCheckBox.isEnabled = isFavourite
             actionId = id
         }
 
@@ -58,9 +61,10 @@ class GistListAdapter : ListAdapter<Gist, GistListAdapter.MyViewHolder>(GistDiff
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val gist = getItem(position)
         holder.bind(
-            gist.id,
+            gist.gistId,
             gist.url,
-            gist.files.keys.toString()
+            gist.files,
+            gist.isFavourite
         )
     }
 }
@@ -68,7 +72,9 @@ class GistListAdapter : ListAdapter<Gist, GistListAdapter.MyViewHolder>(GistDiff
 private class GistDiffCallback : DiffUtil.ItemCallback<Gist>() {
 
     override fun areItemsTheSame(oldItem: Gist, newItem: Gist): Boolean {
-        return oldItem.id == newItem.id
+        return oldItem.gistId == newItem.gistId &&
+                oldItem.isFavourite == newItem.isFavourite &&
+                oldItem.shareCount == newItem.shareCount
     }
 
     override fun areContentsTheSame(oldItem: Gist, newItem: Gist): Boolean {
