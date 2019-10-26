@@ -10,6 +10,9 @@ class GistRepository private constructor(private val gistDao: GistDao) {
 
     fun getGists() = gistDao.getGists()
 
+    suspend fun updateFavourite(gistId: String, isFavourite: Boolean) =
+        gistDao.updateFavourite(gistId, isFavourite)
+
     companion object {
         @Volatile
         private var instance: GistRepository? = null

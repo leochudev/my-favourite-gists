@@ -27,6 +27,7 @@ class GistListAdapter : ListAdapter<Gist, GistListAdapter.MyViewHolder>(GistDiff
         private val filenameTextView: TextView = root.filename_text_view
         private val starCheckBox: CheckBox = root.star_check_box
         private var actionId: String? = null
+        private var isFavourite: Boolean = false
 
         init {
             root.setOnClickListener { it.navigateToDetail() }
@@ -38,12 +39,14 @@ class GistListAdapter : ListAdapter<Gist, GistListAdapter.MyViewHolder>(GistDiff
             filenameTextView.text = resources.getString(R.string.filename_text_format, filename)
             starCheckBox.isEnabled = isFavourite
             actionId = id
+            this.isFavourite = isFavourite
         }
 
         private fun View.navigateToDetail() {
             val directions =
                 GistListFragmentDirections.actionGistListFragmentToGistDetailFragment(
-                    actionId ?: ""
+                    actionId ?: "",
+                    isFavourite
                 )
             findNavController().navigate(directions)
         }

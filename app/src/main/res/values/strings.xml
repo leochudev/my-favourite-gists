@@ -4,4 +4,7 @@
     <string name="id_text_format">id: %s</string>
     <string name="url_text_format">url: %s</string>
     <string name="filename_text_format">files: %s</string>
+    <string name="favourite">favourite</string>
+    <string name="un_favourite">un-favourite</string>
+    <string name="username">username</string>
 </resources>
