@@ -12,13 +12,13 @@ import com.leochudevelop.sharepublicgist.source.RetrofitClient
 
 object InjectorUtils {
 
-    private fun getGistRepository(context: Context): GistRepository =
-        GistRepository.getInstance(provideGistDao(context))
-
-    fun provideGistDao(context: Context): GistDao =
+    private fun getGistDao(context: Context): GistDao =
         AppDatabase.getInstance(context.applicationContext).gistDao()
 
-    fun provideGistHubService(): GitHubService = RetrofitClient.gitHubService
+    private fun getGistHubService(): GitHubService = RetrofitClient.gitHubService
+
+    fun getGistRepository(context: Context): GistRepository =
+        GistRepository.getInstance(getGistDao(context), getGistHubService())
 
     fun provideGistListViewModelFactory(context: Context): ViewModelProvider.Factory {
         val repository = getGistRepository(context)
