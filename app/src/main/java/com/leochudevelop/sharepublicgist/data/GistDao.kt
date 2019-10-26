@@ -11,6 +11,9 @@ interface GistDao {
     @Query("UPDATE Gists SET favourite = :favourite WHERE id = :gistId")
     suspend fun updateFavourite(gistId: String, favourite: Boolean)
 
+    @Query("UPDATE Gists SET shares = :shareCount WHERE id = :gistId")
+    suspend fun updateShareCount(gistId: String, shareCount: Int)
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAll(plants: List<Gist>)
 }

@@ -6,10 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.CheckBox
 import android.widget.TextView
+import androidx.core.view.isVisible
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.leochudevelop.sharepublicgist.Constant
 import com.leochudevelop.sharepublicgist.R
 import com.leochudevelop.sharepublicgist.data.Gist
 import kotlinx.android.synthetic.main.gist_item_view.view.*
@@ -25,28 +27,43 @@ class GistListAdapter : ListAdapter<Gist, GistListAdapter.MyViewHolder>(GistDiff
         private val idTextView: TextView = root.id_text_view
         private val urlTextView: TextView = root.url_text_view
         private val filenameTextView: TextView = root.filename_text_view
+        private val userSharesTextView: TextView = root.user_shares_text_view
         private val starCheckBox: CheckBox = root.star_check_box
         private var actionId: String? = null
-        private var isFavourite: Boolean = false
+        private var favourite: Boolean = false
 
         init {
             root.setOnClickListener { it.navigateToDetail() }
         }
 
-        fun bind(id: String, url: String, filename: String, isFavourite: Boolean) {
+        fun bind(
+            id: String,
+            url: String,
+            filename: String,
+            isFavourite: Boolean,
+            username: String,
+            shareCount: Int
+        ) {
             idTextView.text = resources.getString(R.string.id_text_format, id)
             urlTextView.text = resources.getString(R.string.url_text_format, url)
             filenameTextView.text = resources.getString(R.string.filename_text_format, filename)
             starCheckBox.isEnabled = isFavourite
             actionId = id
-            this.isFavourite = isFavourite
+            favourite = isFavourite
+
+            if (shareCount > Constant.MIN_GISTS_SHARE) {
+                userSharesTextView.text =
+                    resources.getString(R.string.user_shares_text_format, username, shareCount)
+            } else {
+                userSharesTextView.isVisible = false
+            }
         }
 
         private fun View.navigateToDetail() {
             val directions =
                 GistListFragmentDirections.actionGistListFragmentToGistDetailFragment(
                     actionId ?: "",
-                    isFavourite
+                    favourite
                 )
             findNavController().navigate(directions)
         }
@@ -67,7 +84,9 @@ class GistListAdapter : ListAdapter<Gist, GistListAdapter.MyViewHolder>(GistDiff
             gist.gistId,
             gist.url,
             gist.files,
-            gist.isFavourite
+            gist.isFavourite,
+            gist.username,
+            gist.shareCount
         )
     }
 }

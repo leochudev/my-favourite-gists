@@ -35,6 +35,13 @@
             android:layout_height="wrap_content"
             android:padding="8dp"
             tools:text="filename" />
+
+        <TextView
+            android:id="@+id/user_shares_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            tools:text="@string/username"/>
     </LinearLayout>
 
     <CheckBox
