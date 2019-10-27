@@ -8,14 +8,57 @@
 
     <TextView
         android:id="@+id/id_text_view"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:gravity="center"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="id" />
+        app:layout_constraintBottom_toTopOf="@id/url_text_view"
+        tools:text="Gist id:" />
+
+    <TextView
+        android:id="@+id/url_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/id_text_view"
+        app:layout_constraintBottom_toTopOf="@id/filename_text_view"
+        tools:text="Url:" />
+
+    <TextView
+        android:id="@+id/filename_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/url_text_view"
+        app:layout_constraintBottom_toTopOf="@id/owner_name_text_view"
+        tools:text="Filename:" />
+
+    <TextView
+        android:id="@+id/owner_name_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/filename_text_view"
+        app:layout_constraintBottom_toTopOf="@id/share_count_text_view"
+        tools:text="Owner name:" />
+
+    <TextView
+        android:id="@+id/share_count_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/favourite_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/owner_name_text_view"
+        tools:text="Shares:" />
 
     <Button
         android:id="@+id/favourite_button"

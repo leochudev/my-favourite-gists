@@ -35,16 +35,34 @@ class GistDetailFragment : Fragment() {
     }
 
     private fun updateUI() {
+        viewModel.gistId.value = args.gistId
         viewModel.username.value = args.username
         viewModel.favourite.value = args.favourite
+        viewModel.url.value = args.url
+        viewModel.shares.value = args.shares
+        viewModel.filenames.value = args.filenames
     }
 
     private fun subscribeUI(root: View) {
-        viewModel.favourite.observe(viewLifecycleOwner) { favourite ->
-            root.favourite_button.setFavouriteText(favourite)
-        }
-        viewModel.username.observe(viewLifecycleOwner) {username ->
-            root.id_text_view.text = username
+        viewModel.let {
+            it.gistId.observe(viewLifecycleOwner) { gistId ->
+                root.id_text_view.text = gistId
+            }
+            it.username.observe(viewLifecycleOwner) { username ->
+                root.owner_name_text_view.text = username
+            }
+            it.favourite.observe(viewLifecycleOwner) { favourite ->
+                root.favourite_button.setFavouriteText(favourite)
+            }
+            it.filenames.observe(viewLifecycleOwner) { files ->
+                root.filename_text_view.text = files
+            }
+            it.shares.observe(viewLifecycleOwner) { shares ->
+                root.share_count_text_view.text = shares.toString()
+            }
+            it.url.observe(viewLifecycleOwner) { url ->
+                root.url_text_view.text = url
+            }
         }
         root.favourite_button.setOnClickListener {
             viewModel.toggleFavourite()

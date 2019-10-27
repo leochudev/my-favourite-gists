@@ -11,8 +11,8 @@ data class Gist(
     @ColumnInfo(name = "files") val files: String,
     @ColumnInfo(name = "username") val username: String
 ) {
-    @ColumnInfo(name = "favourite") var isFavourite = false
-    @ColumnInfo(name = "shares") var shareCount = 0
+    @ColumnInfo(name = "favourite") var isFavourite: Boolean = false
+    @ColumnInfo(name = "shares") var shareCount: Int = 0
 
     override fun toString() = gistId
 }

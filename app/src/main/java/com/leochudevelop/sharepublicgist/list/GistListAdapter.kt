@@ -29,43 +29,40 @@ class GistListAdapter : ListAdapter<Gist, GistListAdapter.MyViewHolder>(GistDiff
         private val filenameTextView: TextView = root.filename_text_view
         private val userSharesTextView: TextView = root.user_shares_text_view
         private val starCheckBox: CheckBox = root.star_check_box
-        private var actionId: String? = null
-        private var favourite: Boolean = false
+
+        private var gist: Gist? = null
 
         init {
             root.setOnClickListener { it.navigateToDetail() }
         }
 
-        fun bind(
-            id: String,
-            url: String,
-            filename: String,
-            isFavourite: Boolean,
-            username: String,
-            shareCount: Int
-        ) {
-            idTextView.text = resources.getString(R.string.id_text_format, id)
-            urlTextView.text = resources.getString(R.string.url_text_format, url)
-            filenameTextView.text = resources.getString(R.string.filename_text_format, filename)
-            starCheckBox.isEnabled = isFavourite
-            actionId = id
-            favourite = isFavourite
+        fun bind(gist: Gist) {
+            this.gist = gist
+            idTextView.text = resources.getString(R.string.id_text_format, gist.gistId)
+            urlTextView.text = resources.getString(R.string.url_text_format, gist.url)
+            filenameTextView.text = resources.getString(R.string.filename_text_format, gist.files)
+            starCheckBox.isEnabled = gist.isFavourite
 
-            if (shareCount > Constant.MIN_GISTS_SHARE) {
+            if (gist.shareCount > Constant.MIN_GISTS_SHARE) {
                 userSharesTextView.text =
-                    resources.getString(R.string.user_shares_text_format, username, shareCount)
+                    resources.getString(
+                        R.string.user_shares_text_format,
+                        gist.username,
+                        gist.shareCount
+                    )
             } else {
                 userSharesTextView.isVisible = false
             }
         }
 
         private fun View.navigateToDetail() {
-            val directions =
-                GistListFragmentDirections.actionGistListFragmentToGistDetailFragment(
-                    actionId ?: "",
-                    favourite
-                )
-            findNavController().navigate(directions)
+            gist?.let {
+                val directions =
+                    GistListFragmentDirections.actionGistListFragmentToGistDetailFragment(
+                        it.gistId, it.username, it.files, it.url, it.shareCount, it.isFavourite
+                    )
+                findNavController().navigate(directions)
+            }
         }
     }
 
@@ -80,14 +77,7 @@ class GistListAdapter : ListAdapter<Gist, GistListAdapter.MyViewHolder>(GistDiff
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val gist = getItem(position)
-        holder.bind(
-            gist.gistId,
-            gist.url,
-            gist.files,
-            gist.isFavourite,
-            gist.username,
-            gist.shareCount
-        )
+        holder.bind(gist)
     }
 }
 
