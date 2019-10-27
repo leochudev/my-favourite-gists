@@ -1,11 +1,11 @@
-package com.leochudevelop.sharepublicgist.workers
+package com.leochudevelop.myfavouritegists.workers
 
 import android.content.Context
 import android.util.Log
 import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
-import com.leochudevelop.sharepublicgist.source.GistRepository
-import com.leochudevelop.sharepublicgist.utils.InjectorUtils
+import com.leochudevelop.myfavouritegists.source.GistRepository
+import com.leochudevelop.myfavouritegists.utils.InjectorUtils
 import kotlinx.coroutines.coroutineScope
 
 class GistDatabaseWorker(

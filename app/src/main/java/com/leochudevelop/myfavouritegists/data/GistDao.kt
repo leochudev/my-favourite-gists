@@ -1,4 +1,4 @@
-package com.leochudevelop.sharepublicgist.data
+package com.leochudevelop.myfavouritegists.data
 
 import androidx.lifecycle.LiveData
 import androidx.room.*

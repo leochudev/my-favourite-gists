@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/gist_list_fragment"
-        android:name="com.leochudevelop.sharepublicgist.list.GistListFragment"
+        android:name="com.leochudevelop.myfavouritegists.list.GistListFragment"
         android:label="GistListFragment"
         tools:layout="@layout/fragment_gist_list">
         <action
@@ -17,7 +17,7 @@
 
     <fragment
         android:id="@+id/gist_detail_fragment"
-        android:name="com.leochudevelop.sharepublicgist.detail.GistDetailFragment"
+        android:name="com.leochudevelop.myfavouritegists.detail.GistDetailFragment"
         android:label="fragment_gist_detail"
         tools:layout="@layout/fragment_gist_detail">
 

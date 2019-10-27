@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Share Public Gist</string>
+    <string name="app_name">My Favourite Gists</string>
     <string name="action_settings">Settings</string>
     <string name="id_text_format">id: %s</string>
     <string name="url_text_format">url: %s</string>

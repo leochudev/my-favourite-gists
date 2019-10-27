@@ -1,4 +1,4 @@
-package com.leochudevelop.sharepublicgist
+package com.leochudevelop.myfavouritegists
 
 import android.os.Bundle
 import android.view.Menu

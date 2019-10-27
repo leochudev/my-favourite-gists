@@ -1,4 +1,4 @@
-package com.leochudevelop.sharepublicgist.list
+package com.leochudevelop.myfavouritegists.list
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,8 +7,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.observe
-import com.leochudevelop.sharepublicgist.R
-import com.leochudevelop.sharepublicgist.utils.InjectorUtils
+import com.leochudevelop.myfavouritegists.R
+import com.leochudevelop.myfavouritegists.utils.InjectorUtils
 import kotlinx.android.synthetic.main.fragment_gist_list.view.*
 
 /**

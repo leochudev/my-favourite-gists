@@ -1,14 +1,14 @@
-package com.leochudevelop.sharepublicgist.utils
+package com.leochudevelop.myfavouritegists.utils
 
 import android.content.Context
 import androidx.lifecycle.ViewModelProvider
-import com.leochudevelop.sharepublicgist.data.AppDatabase
-import com.leochudevelop.sharepublicgist.data.GistDao
-import com.leochudevelop.sharepublicgist.detail.GistDetailViewModelFactory
-import com.leochudevelop.sharepublicgist.list.GistListViewModelFactory
-import com.leochudevelop.sharepublicgist.source.GistRepository
-import com.leochudevelop.sharepublicgist.source.GitHubService
-import com.leochudevelop.sharepublicgist.source.RetrofitClient
+import com.leochudevelop.myfavouritegists.data.AppDatabase
+import com.leochudevelop.myfavouritegists.data.GistDao
+import com.leochudevelop.myfavouritegists.detail.GistDetailViewModelFactory
+import com.leochudevelop.myfavouritegists.list.GistListViewModelFactory
+import com.leochudevelop.myfavouritegists.source.GistRepository
+import com.leochudevelop.myfavouritegists.source.GitHubService
+import com.leochudevelop.myfavouritegists.source.RetrofitClient
 
 object InjectorUtils {
 

@@ -1,4 +1,4 @@
-package com.leochudevelop.sharepublicgist.data
+package com.leochudevelop.myfavouritegists.data
 
 import android.content.Context
 import androidx.room.Database
@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
-import com.leochudevelop.sharepublicgist.workers.GistDatabaseWorker
+import com.leochudevelop.myfavouritegists.workers.GistDatabaseWorker
 
 /**
  * The Room database for this app

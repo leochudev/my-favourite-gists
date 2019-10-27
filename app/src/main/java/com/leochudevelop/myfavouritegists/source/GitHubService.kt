@@ -1,6 +1,6 @@
-package com.leochudevelop.sharepublicgist.source
+package com.leochudevelop.myfavouritegists.source
 
-import com.leochudevelop.sharepublicgist.data.GistDto
+import com.leochudevelop.myfavouritegists.data.GistDto
 import retrofit2.http.GET
 import retrofit2.http.Path
 

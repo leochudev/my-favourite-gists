@@ -1,4 +1,4 @@
-package com.leochudevelop.sharepublicgist.data
+package com.leochudevelop.myfavouritegists.data
 
 /**
  * A DTO for [https://api.github.com/gists/public] API.

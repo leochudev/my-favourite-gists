@@ -1,4 +1,4 @@
-package com.leochudevelop.sharepublicgist.source
+package com.leochudevelop.myfavouritegists.source
 
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
@@ -17,7 +17,7 @@ object RetrofitClient {
         OkHttpClient.Builder().apply {
             addInterceptor { chain ->
                 val request = chain.request().newBuilder()
-                    .header("User-Agent", "Share-Public-Gists")
+                    .header("User-Agent", "My-Favourite-Gists")
                     .build()
                 chain.proceed(request)
             }

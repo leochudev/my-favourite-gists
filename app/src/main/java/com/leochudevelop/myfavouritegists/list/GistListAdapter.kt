@@ -1,4 +1,4 @@
-package com.leochudevelop.sharepublicgist.list
+package com.leochudevelop.myfavouritegists.list
 
 import android.content.res.Resources
 import android.view.LayoutInflater
@@ -11,9 +11,9 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.leochudevelop.sharepublicgist.Constant
-import com.leochudevelop.sharepublicgist.R
-import com.leochudevelop.sharepublicgist.data.Gist
+import com.leochudevelop.myfavouritegists.Constant
+import com.leochudevelop.myfavouritegists.R
+import com.leochudevelop.myfavouritegists.data.Gist
 import kotlinx.android.synthetic.main.gist_item_view.view.*
 
 /**

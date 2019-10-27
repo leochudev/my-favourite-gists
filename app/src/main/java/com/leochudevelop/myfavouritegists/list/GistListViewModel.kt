@@ -1,9 +1,9 @@
-package com.leochudevelop.sharepublicgist.list
+package com.leochudevelop.myfavouritegists.list
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
-import com.leochudevelop.sharepublicgist.data.Gist
-import com.leochudevelop.sharepublicgist.source.GistRepository
+import com.leochudevelop.myfavouritegists.data.Gist
+import com.leochudevelop.myfavouritegists.source.GistRepository
 
 class GistListViewModel internal constructor(
     gistRepository: GistRepository

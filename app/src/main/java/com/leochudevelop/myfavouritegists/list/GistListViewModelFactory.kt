@@ -1,8 +1,8 @@
-package com.leochudevelop.sharepublicgist.list
+package com.leochudevelop.myfavouritegists.list
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.leochudevelop.sharepublicgist.source.GistRepository
+import com.leochudevelop.myfavouritegists.source.GistRepository
 
 /**
  * Factory for creating a [GistListViewModel] with a constructor that takes a [GistRepository].

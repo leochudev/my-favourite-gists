@@ -1,8 +1,8 @@
-package com.leochudevelop.sharepublicgist.source
+package com.leochudevelop.myfavouritegists.source
 
-import com.leochudevelop.sharepublicgist.data.Gist
-import com.leochudevelop.sharepublicgist.data.GistDao
-import com.leochudevelop.sharepublicgist.data.GistDto
+import com.leochudevelop.myfavouritegists.data.Gist
+import com.leochudevelop.myfavouritegists.data.GistDao
+import com.leochudevelop.myfavouritegists.data.GistDto
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 

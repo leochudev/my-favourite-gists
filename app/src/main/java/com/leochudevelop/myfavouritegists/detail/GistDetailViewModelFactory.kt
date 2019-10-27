@@ -1,8 +1,8 @@
-package com.leochudevelop.sharepublicgist.detail
+package com.leochudevelop.myfavouritegists.detail
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.leochudevelop.sharepublicgist.source.GistRepository
+import com.leochudevelop.myfavouritegists.source.GistRepository
 
 class GistDetailViewModelFactory(
     private val repository: GistRepository

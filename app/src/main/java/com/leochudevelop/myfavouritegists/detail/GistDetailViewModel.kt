@@ -1,9 +1,9 @@
-package com.leochudevelop.sharepublicgist.detail
+package com.leochudevelop.myfavouritegists.detail
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.leochudevelop.sharepublicgist.source.GistRepository
+import com.leochudevelop.myfavouritegists.source.GistRepository
 import kotlinx.coroutines.launch
 
 class GistDetailViewModel internal constructor(

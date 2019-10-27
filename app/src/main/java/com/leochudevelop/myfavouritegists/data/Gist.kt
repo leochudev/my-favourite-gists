@@ -1,4 +1,4 @@
-package com.leochudevelop.sharepublicgist.data
+package com.leochudevelop.myfavouritegists.data
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
