@@ -2,6 +2,7 @@ package com.leochudevelop.sharepublicgist.source
 
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -20,6 +21,12 @@ object RetrofitClient {
                     .build()
                 chain.proceed(request)
             }
+            addInterceptor(
+                HttpLoggingInterceptor()
+                    .setLevel(HttpLoggingInterceptor.Level.BASIC)
+                    .setLevel(HttpLoggingInterceptor.Level.BODY)
+                    .setLevel(HttpLoggingInterceptor.Level.HEADERS)
+            )
         }.build()
     }
 
